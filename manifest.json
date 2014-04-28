@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+
+  "name": "_blank",
+  "description": "Make simple changes to how some news aggregators work",
+  "version": "0.1",
+
+  "browser_action": {
+    "default_icon": "icon.png"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["http://www.reddit.com/*", "https://news.ycombinator.com/*", "https://www.readability.com/articles/*"],
+      "js": ["jquery.js", "jquery-ui.js", "blank.js"]
+    }
+  ]
+}
