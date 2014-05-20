@@ -1,8 +1,29 @@
-$(".title a").prop('target', '_blank');
-$(".mode-night a").css('color', '#ddd');
-$(".mode-night a").css('text-decoration', 'none');
+//Reddit changes
+if (window.location.href.indexOf("reddit") > -1) {
+    $(".title a").prop('target', '_blank');
+}
 
-//if we're on HackerNews they don't use classes much so it gets more awkward
+//Readability changes
+if (window.location.href.indexOf("readability") > -1) {
+    var links = $(".mode-night a");
+    links.css('color', '#ddd');
+    var linkColor = 'dark';
+    links.css('text-decoration', 'none');
+    
+    $('body').keypress(function(event) {
+        if (event.which == 65 || event.which == 97) {
+            if(linkColor == 'dark') {
+                links.css('color', '#00f');
+                linkColor = 'blue';
+            } else {
+                links.css('color', '#ddd');
+                linkColor = 'dark';
+            }
+        }
+    });
+}
+
+//Hacker News changes
 if (window.location.href.indexOf("ycombinator") > -1) {
   $($("a").get().reverse()).each(function() {
     if ($(this).text() === "More") {
